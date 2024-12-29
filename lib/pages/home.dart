@@ -1,32 +1,129 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pet_store/models/category_model.dart';
+import 'package:pet_store/models/toys_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   List<CategoryModel> categories = [];
+  List<ToysModel> toys = [];
 
   void getCategories() {
     categories = CategoryModel.getCategories();
   }
 
+  void getToys() {
+    toys = ToysModel.getToys();
+  }
+
+  void getInitialInfo() {
+    categories = CategoryModel.getCategories();
+    toys = ToysModel.getToys();
+  }
+
   @override
   Widget build(BuildContext context) {
-    getCategories();
+    getInitialInfo();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          searchField(),
-          SizedBox(
-            height: 40,
+      body: SingleChildScrollView(
+        child: IntrinsicHeight(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              searchField(),
+              SizedBox(
+                height: 40,
+              ),
+              categoriesSection(),
+              SizedBox(
+                height: 40,
+              ),
+              bestSellersSection(),
+            ],
           ),
-          categoriesSection(),
-        ],
+        ),
       ),
+    );
+  }
+
+  Column bestSellersSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: Text(
+            'Best sellers',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        SizedBox(
+          height: 300,
+          child: ListView.separated(
+            itemCount: toys.length,
+            scrollDirection: Axis.vertical,
+            padding: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+            ),
+            separatorBuilder: (context, index) => SizedBox(
+              height: 25,
+            ),
+            itemBuilder: (context, index) {
+              return Container(
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(16),
+                        image: DecorationImage(
+                          image: AssetImage(toys[index].imgPath),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      toys[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      '\$${toys[index].price}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      '${toys[index].rating.toString()} stars',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 
