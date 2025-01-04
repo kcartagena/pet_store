@@ -4,11 +4,13 @@ class CategoryModel {
   String name;
   String iconPath;
   Color boxColor;
+  String page;
 
   CategoryModel({
     required this.name,
     required this.iconPath,
     required this.boxColor,
+    required this.page,
   });
 
   static List<CategoryModel> getCategories() {
@@ -19,6 +21,7 @@ class CategoryModel {
         name: 'Food',
         iconPath: 'assets/icons/dog.svg', 
         boxColor: Colors.blue,
+        page: 'FoodPage',
         ),
     );
 
@@ -27,6 +30,7 @@ class CategoryModel {
         name: 'Toys',
         iconPath: 'assets/icons/paw.svg', 
         boxColor: Colors.blueGrey,
+        page: 'ToysPage',
         ),
     );
 
@@ -35,6 +39,7 @@ class CategoryModel {
         name: 'Treats',
         iconPath: 'assets/icons/bone.svg', 
         boxColor: Colors.blue,
+        page: 'TreatsPage',
         ),
     );
 
