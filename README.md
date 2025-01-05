@@ -2,8 +2,9 @@
 - created as practice with Flutter + Dart
 
 ## View the app
-![Home page image](./assets/main.png)
 
-![Home page image](./assets/popup.png)
+<img src="./assets/main.png" alt="Home page image" width="200"/>
 
-![Home page image](./assets/toys.png)
+<img src="./assets/popup.png" alt="Popup on page image" width="200"/>
+
+<img src="./assets/main.png" alt="Toys page image" width="200"/>
