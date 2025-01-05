@@ -29,19 +29,23 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          searchField(),
-          SizedBox(
-            height: 40,
+      body: SingleChildScrollView(
+        child: IntrinsicHeight(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              searchField(),
+              SizedBox(
+                height: 40,
+              ),
+              categoriesSection(),
+              SizedBox(
+                height: 40,
+              ),
+              bestSellersSection(),
+            ],
           ),
-          categoriesSection(),
-          SizedBox(
-            height: 40,
-          ),
-          bestSellersSection(),
-        ],
+        ),
       ),
     );
   }
