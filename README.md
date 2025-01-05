@@ -1,8 +1,9 @@
 ### This is a pet store mobile app created using Flutter + Dart
+- created as practice with Flutter + Dart
 
-- Not a fully functional app.
+## View the app
+![Home page image](./assets/main.png)
 
-### Suggested actions
-- Scroll the sections on the home page.
-- select the toys category.
-go back to the previous page from the toys page using the appbar.
+![Home page image](./assets/popup.png)
+
+![Home page image](./assets/toys.png)
